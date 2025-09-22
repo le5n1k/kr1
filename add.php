@@ -4,14 +4,12 @@ require_once 'config.php';
 $success = false;
 $error = '';
 
-// Обработка отправки формы
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $description = trim($_POST['description'] ?? '');
     $category = trim($_POST['category'] ?? 'веб-разработка');
     $complexity = $_POST['complexity'] ?? 'средне';
     
-    // Валидация данных
     if (empty($title)) {
         $error = 'Название проекта обязательно для заполнения';
     } elseif (strlen($title) > 255) {
@@ -24,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$title, $description, $category, $complexity]);
             $success = true;
             
-            // Очистка формы после успешного добавления
             $title = $description = $category = '';
             $complexity = 'средне';
         } catch(PDOException $e) {
