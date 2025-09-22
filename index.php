@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-// Получение всех идей проектов из базы данных
+
 try {
     $stmt = $pdo->query("SELECT * FROM tasks ORDER BY created_at DESC");
     $projects = $stmt->fetchAll();

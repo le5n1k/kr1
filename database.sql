@@ -1,10 +1,8 @@
--- Создание базы данных для базы идей проектов
+
 CREATE DATABASE IF NOT EXISTS task_manager CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- Использование созданной базы данных
 USE task_manager;
 
--- Создание таблицы проектов (идей)
 CREATE TABLE IF NOT EXISTS tasks (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL COMMENT 'Название проекта',
@@ -15,7 +13,6 @@ CREATE TABLE IF NOT EXISTS tasks (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата добавления идеи'
 );
 
--- Вставка тестовых идей проектов
 INSERT INTO tasks (title, description, category, complexity, status) VALUES 
 ('Социальная сеть для разработчиков', 'Платформа для общения программистов, обмена кодом и поиска команды для проектов. Включает систему рейтинга, портфолио и форум.', 'веб-разработка', 'сложно', 'не выполнена'),
 

@@ -5,7 +5,6 @@ $success = false;
 $error = '';
 $task = null;
 
-// Получение ID задачи из URL
 $taskId = $_GET['id'] ?? null;
 
 if (!$taskId || !is_numeric($taskId)) {
@@ -13,7 +12,6 @@ if (!$taskId || !is_numeric($taskId)) {
     exit;
 }
 
-// Получение данных проекта
 try {
     $stmt = $pdo->prepare("SELECT * FROM tasks WHERE id = ?");
     $stmt->execute([$taskId]);
@@ -27,14 +25,14 @@ try {
     $error = 'Ошибка при получении данных проекта: ' . $e->getMessage();
 }
 
-// Обработка отправки формы
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $project) {
     $title = trim($_POST['title'] ?? '');
     $description = trim($_POST['description'] ?? '');
     $category = trim($_POST['category'] ?? 'общее');
     $complexity = $_POST['complexity'] ?? 'средне';
     
-    // Валидация данных
+
     if (empty($title)) {
         $error = 'Название проекта обязательно для заполнения';
     } elseif (strlen($title) > 255) {
@@ -46,8 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $project) {
             $stmt = $pdo->prepare("UPDATE tasks SET title = ?, description = ?, category = ?, complexity = ? WHERE id = ?");
             $stmt->execute([$title, $description, $category, $complexity, $taskId]);
             $success = true;
-            
-            // Обновление данных проекта для отображения
+
             $project['title'] = $title;
             $project['description'] = $description;
             $project['category'] = $category;
@@ -106,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $project) {
                         <?php endif; ?>
 
                         <?php if ($project): ?>
-                            <!-- Информация о статусе и дате создания -->
+
                             <div class="alert status-info" role="alert">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -198,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $project) {
                     </div>
                 </div>
 
-                <!-- Дополнительные действия -->
+
                 <?php if ($project): ?>
                     <div class="card mt-3">
                         <div class="card-header">
