@@ -23,8 +23,17 @@ try {
             background-color: #f8f9fa;
         }
         .project-completed {
-            opacity: 0.8;
-            border: 2px solid #28a745;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+        }
+        .project-completed .card-text,
+        .project-completed h6,
+        .project-completed .card-title {
+            text-decoration: line-through;
+        }
+        .project-completed .badge {
+            opacity: 0.7;
         }
         .complexity-badge {
             font-size: 0.8em;
