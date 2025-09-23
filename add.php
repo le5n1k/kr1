@@ -4,14 +4,20 @@ require_once 'config.php';
 $success = false;
 $error = '';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2e6a1e5d183a9358ceb725c60fdfc6a9dbb3ca45
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $description = trim($_POST['description'] ?? '');
     $category = trim($_POST['category'] ?? 'веб-разработка');
     $complexity = $_POST['complexity'] ?? 'средне';
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2e6a1e5d183a9358ceb725c60fdfc6a9dbb3ca45
     if (empty($title)) {
         $error = 'Название проекта обязательно для заполнения';
     } elseif (strlen($title) > 255) {
@@ -24,7 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$title, $description, $category, $complexity]);
             $success = true;
             
+<<<<<<< HEAD
             
+=======
+>>>>>>> 2e6a1e5d183a9358ceb725c60fdfc6a9dbb3ca45
             $title = $description = $category = '';
             $complexity = 'средне';
         } catch(PDOException $e) {
